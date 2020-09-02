@@ -12,6 +12,34 @@ void createEmptyTree(bst **tree)
     *tree = NULL;
 
 }
+
+/*Iterative function to insert element in Binary Search Tree */
+void insertElement(bst **tree,int element)
+{
+    bst *ptr , *node , *parent ;
+    ptr = (bst*)malloc(sizeof(bst)) ;
+    ptr->info = element ;
+    ptr->left = ptr->right = NULL ;
+    if(*tree == NULL){
+        *tree = ptr ;
+        return ;
+    }
+    node = (*tree) ;
+    parent = NULL ;
+    while(node != NULL)
+    {
+        parent = node ;
+        if(element < parent->info)
+            node = node -> left ;
+        else
+            node = node -> right ;
+    }
+    if(element < parent -> info)
+        parent->left = ptr;
+    else
+        parent->right = ptr ;
+}
+
 /* Recursive function to insert element in binary search tree*/
 void insertElementRecursive(bst **tree,int element)
 {
@@ -32,6 +60,12 @@ void insertElementRecursive(bst **tree,int element)
      }
 
 }
+/*
+    preorder traversal :
+    root
+    left
+    right
+*/
 void preOrderTraversal(bst *tree)
 {
     if(tree != NULL)
@@ -42,6 +76,12 @@ void preOrderTraversal(bst *tree)
     }
 
 }
+/*
+    post order traversal :
+    left
+    right
+    root
+*/
 void postOrderTraversal(bst *tree)
 {
     if(tree != NULL)
@@ -51,7 +91,17 @@ void postOrderTraversal(bst *tree)
         printf("%d\t",tree->info) ;
     }
 
-}void inOrderTraversal(bst *tree)
+}
+
+/* Inorder traversal :
+    left
+    root
+    right
+*/
+/* inorder trasversal displays the elements of b.s.t. in sorted form
+*/
+
+void inOrderTraversal(bst *tree)
 {
     if(tree != NULL)
     {
@@ -61,6 +111,8 @@ void postOrderTraversal(bst *tree)
     }
 
 }
+
+/* main function */
 int main()
 {
     bst *root;
