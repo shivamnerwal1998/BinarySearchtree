@@ -1,4 +1,4 @@
-69#include<iostream>
+#include<iostream>
 using namespace std;
 struct bst{
     int info;
