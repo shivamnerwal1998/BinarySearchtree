@@ -12,6 +12,60 @@ void createEmptyTree(bst **tree)
     *tree = NULL;
 
 }
+// Using queue for level order traversal   
+
+/*
+
+typedef struct NodeType
+{
+    int info ;
+    struct NodeType *next ;
+
+}node;
+typedef struct queueType
+{
+    node *front ;
+    node *rear ;
+}queue ;
+
+void createQueue(queue *q)
+{
+    q->front = NULL ;
+    q->rear = NULL ;
+
+}
+void enqueue(queue *q,int data)
+{
+    node *ptr;
+    ptr = (node *)malloc(sizeof(node));
+    ptr->info = data ;
+    ptr->next = NULL ;
+    if( q->rear == NULL )
+    {
+        q->front = q->rear = ptr ;
+    }
+    else
+    {
+        (q->rear)->next = ptr ;
+        q->rear = ptr ;
+
+    }
+}
+
+void dequeue(queue *q)
+{
+    node *ptr ;
+    ptr = q->front ;
+    if( q->front ==  NULL && q->rear == NULL  )
+    {
+        printf("\nQUEUE IS EMPTY\n");
+        return ;
+    }
+    (q->front) = (q->front)->next ;
+    printf("%d\n",ptr->info) ;
+    free(ptr) ;
+}
+*/
 
 /*Iterative function to insert element in Binary Search Tree */
 void insertElement(bst **tree,int element)
