@@ -60,6 +60,37 @@ void inOrderTraversal(bst *tree)
     }
 
 }
+/* Pre - Order Traversal  */
+void preOrderTraversal(bst *tree)
+{
+    if(tree != NULL )
+    {
+        cout << tree->data << "\t" ;
+        preOrderTraversal(tree->left) ;
+        preOrderTraversal(tree->right) ;
+    }
+
+}
+/* Post - Order Traversal  */
+void postOrderTraversal(bst *tree)
+{
+    if(tree != NULL )
+    {
+        preOrderTraversal(tree->right) ;
+        preOrderTraversal(tree->left) ;
+        cout << tree->data << "\t" ;
+    }
+
+}
+bst* maxValue(bst* tree)
+{
+    while( tree != NULL && tree->right != NULL  )
+    {
+        tree = tree->right ;
+    }
+    return tree ;
+
+}
 /* Function to find smallest element in binary search tree */
 
 bst* minValue(bst*tree)
@@ -118,9 +149,19 @@ int main()
     insertNode(&tree,15);
     insertNode(&tree,20);
     insertNode(&tree,30);
+    cout << endl << "inOrderTraversal\n" ;
     inOrderTraversal(tree);
+    cout << endl<< "preOrderTraversal \n" ;
+    preOrderTraversal(tree);
+    cout << endl <<"postOrderTraversal \n" ;
+    postOrderTraversal(tree);
+    cout <<"\n deleting 10  \n";
     deleteNode(&tree , 10) ;
-    cout << endl ;
+    cout << "\ninOrderTraversal\n" ;
     inOrderTraversal(tree);
+    cout << "\nlargest element is :\n"
+       << maxValue(tree)->data;
+    cout << "\nsmallest element is :\n"
+       << minValue(tree)->data;
     getchar();
 }
